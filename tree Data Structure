@@ -1,0 +1,86 @@
+class  TreeNode{
+    constructor(data){
+        this.right = null
+        this.data = data
+        this.left = null
+    }
+}
+class Tree {
+    append(data,curr=this.root){
+        if(!this.root) this.root = new TreeNode(data)
+        else{
+            if(data>curr.data){
+                if(!curr.right)curr.right = new TreeNode(data)
+                else this.append(data,curr.right)
+            }
+            else{
+                if(!curr.left) curr.left = new TreeNode(data)
+                else this.append(data,curr.left)
+            }
+        }
+    }
+    dfs(node = this.root ){
+        if(node.left) this.dfs(node.left)
+        console.log(node.data)
+        if(node.right) this.dfs(node.right)
+        return
+    }
+    print(){
+        console.log(this.root)
+    }
+    length(){
+        let count = 0
+        function traverse(node){
+            if(node.data)count+=1
+            if(node.left)traverse(node.left)
+            if(node.right)traverse(node.right)
+        }
+        traverse(this.root)
+        console.log('length of Tree:',count)
+    }
+    bfs(node = this.root){
+        let array = []
+        let result = []
+        array.push(node) 
+        
+        function traverse(){
+            if(array.length){
+                 let temp = array.pop()
+                  
+                 result.push(temp.data)
+                 if(temp.left)array.push(temp.left)
+                 if(temp.right)array.push(temp.right)
+                  
+                 traverse()
+            }    
+        }
+        traverse()
+        console.log('bfs:',result)
+    }
+    level(){
+        let level =0
+        let visitCount =0
+        function traverse(node ){
+            if(node.data) visitCount+=1
+            if(visitCount>level) level = visitCount
+            if(node.left) traverse(node.left)
+            if(node.right) traverse(node.right)
+            visitCount --
+            
+        }
+        traverse(this.root)
+        console.log('level of Tree :',level)
+    }
+}
+
+const tree = new Tree()
+tree.append(10)
+tree.append(20)
+tree.append(30)
+tree.append(9)
+tree.append(7)
+//tree.print()
+tree.dfs()
+tree.bfs()
+tree.length()
+tree.level()
