@@ -1,0 +1,59 @@
+class Grapgh{
+    constructor(){
+        this.adjacencyList = {}
+    }
+    addVertex(ver1){
+        if(!this.adjacencyList[ver1]) this.adjacencyList[ver1] = {}
+    }
+    addEdges(vertex1,vertex2){
+        if(!this.adjacencyList[vertex1]) this.adjacencyList[vertex1] = {}
+        if(!this.adjacencyList[vertex2]) this.adjacencyList[vertex2] = {}
+        if(!this.adjacencyList[vertex1][vertex2]) 
+        this.adjacencyList[vertex1][vertex2] = {}
+    }
+    bfs(){
+        let visitList = new Set()
+        let result = new Set()
+        let rootGraph = this.adjacencyList
+        function traverse(graph){
+            for(let vertex in graph ){
+               
+                result.add(vertex)
+                traverse(graph[vertex])
+            }
+            
+        }
+        traverse(rootGraph)
+        console.log('bfs:',[...result])
+    }
+    dfs(){
+       let result = new Set()
+       let rootGraph = this.adjacencyList
+       function traverse(graph){
+           for(let vertex in graph){
+               if(!result.has(vertex)){ result.add(vertex)
+                     traverse(rootGraph[vertex])}
+               
+           }
+       }
+       
+       traverse(this.adjacencyList)
+       console.log('dfs:', [...result])
+        
+    }
+    print(){
+        console.log(this.adjacencyList)
+    }
+    
+}
+
+const graph = new Grapgh()
+graph.addVertex(10)
+graph.addVertex(20)
+graph.addEdges(10,30)
+graph.addEdges(30,40)
+graph.addEdges(40,60)
+graph.addEdges(60,10)
+graph.print()
+graph.dfs()
+graph.bfs()
