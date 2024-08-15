@@ -1,0 +1,47 @@
+class Stack{
+    stack = []
+    push(data){
+        this.stack.push(data)
+    }
+    pop(){
+        return this.stack.pop()
+    }
+    peak(){
+        return this.stack[this.stack.length-1]
+    }
+    print(){
+        console.log(this.stack)
+    }
+    sort(){
+        let stack2 = new Stack()
+        while(this.stack.length){
+            stack2.push(this.pop())
+        }
+        while(stack2.stack.length){
+            let temp = stack2.pop()
+            if(this.peak() && temp> this.peak()){
+                while(temp >this.peak()){
+                    stack2.push(this.pop())
+                }
+            }
+            this.push(temp)
+        }
+    }
+}
+
+
+const stack = new Stack()
+stack.push(30)
+
+stack.push(18)
+stack.push(20)
+stack.push(25)
+stack.push(70)
+stack.push(15)
+stack.push(80)
+stack.push(90) 
+
+stack.print() 
+stack.sort()
+stack.print()
+
