@@ -1,0 +1,6 @@
+Explain scope chaining in JavaScript. How does it work?
+Differentiate between global, function, and block scope.
+What is hoisting? How does it affect variable and function declarations?
+Describe the difference between var, let, and const keywords in terms of scope.
+How does closure work in relation to scope?
+Explain the concept of lexical environment.
