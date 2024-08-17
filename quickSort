@@ -1,0 +1,17 @@
+//quick Sort
+
+function quickSort(array){
+       if(array.length<1)return array
+       let pivot = array.pop()
+       let left = []
+       let right = []
+       while(array.length){
+           let val = array.pop()
+           if(val>pivot) right.push(val)
+           else left.push(val)
+           
+       }
+       return [...quickSort(left),pivot,...quickSort(right)]
+}
+let ar = [5,9,5,4,8,1,58,321,54,56,54,4,646,4,64,64,6454,984,6]
+console.log(quickSort(ar))
