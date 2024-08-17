@@ -1,0 +1,47 @@
+let x = 10;
+
+function foo() {
+  console.log(x);
+}
+foo();
+----------------------------------------
+let x = 10;
+function foo() {
+  let x = 20;
+  console.log(x);
+}
+foo();
+console.log(x);
+--------------------------------------
+if (true) {
+  let y = 5;
+}
+console.log(y);
+-------------------------------------
+
+for (let i = 0; i < 3; i++) {
+  console.log(i);
+}
+
+console.log(i);
+----------------------------------
+console.log(a);
+var a = 10;
+--------------------------------
+foo();
+
+function foo() {
+  console.log("Hello");
+}
+--------------------------------
+function counter() {
+  let count = 0;
+  return function() {
+    return count++;
+  };
+}
+
+const increment = counter();
+console.log(increment());
+console.log(increment());
+-----------------------------------
