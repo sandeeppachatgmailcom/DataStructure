@@ -1,0 +1,21 @@
+//quick Sort
+function bubbleSort(array){
+    let swap = true
+    let count = 1
+    while(swap){
+    swap =false
+    console.log(count)
+    for(let i = 0;i<array.length;i++ ){    
+          count ++
+                if(array[i]< array[i+1]) {
+                    [array[i], array[i+1]] = [array[i+1],array[i]]
+                    swap = true
+            }
+        }
+    }
+ 
+    
+}
+let arra = [1,5,45,2,6,5,1,2,16,78,3,656,1,31465,364,654,31,58]
+bubbleSort(arra)
+console.log(arra)
